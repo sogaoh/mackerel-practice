@@ -55,26 +55,35 @@ ansible-galaxy install mackerelio.mackerel-agent
 
 cd 02_ansible/roles
 mv ${/path/to/.ansible}/roles/* ./ 
-cd ..
+cd ..    # 02_ansible
 
 (vi inventry)
 (vi variables.yaml)
 
-ansible-playbook ./docker-01_1.yaml -i inventry -e @variables.yaml -u ubuntu -v -C
+ansible-playbook ./docker-01_1.yaml -i inventry                    -u ubuntu -v -C
 ansible-playbook ./docker-01_2.yaml -i inventry -e @variables.yaml -u ubuntu -v -C 
 ansible-playbook ./docker-01_3.yaml -i inventry -e @variables.yaml -u ubuntu -v -C 
 
-ansible-playbook ./docker-01_1.yaml -i inventry -e @variables.yaml -u ubuntu -vv
+ansible-playbook ./docker-01_1.yaml -i inventry                    -u ubuntu -vv
 ansible-playbook ./docker-01_2.yaml -i inventry -e @variables.yaml -u ubuntu -vv 
 ansible-playbook ./docker-01_3.yaml -i inventry -e @variables.yaml -u ubuntu -vv 
 
 rm -f *.retry
+
+cd ..   # mackerel-practice
+```
+
+### 03.db_data 
+```
+cd 03_db-data
+
+
 ```
 
 
-## Setting Contents
+## Setting Contents, Resources
 
-### 01_terraform
+### 01.Terraform
 #### terraform.tfvars
 ``` 
 region = ${Set Yours}
@@ -97,7 +106,7 @@ mackerel_aws_integration_account_id  = ${Set Yours}
 mackerel_aws_integration_external_id = ${Set Yours}
 ```
 
-### 02_ansible
+### 02.Ansible
 ### inventry
 ```
 [logstash]
@@ -128,6 +137,13 @@ aws_region: "${Set Yours}"
 aws_access_key: "${Set Yours}"
 aws_secret_key: "${Set Yours}"
 ```
+
+## 03.DB-data
+
+### MySQL のサンプルDB world.sql の取得元
+- https://dev.mysql.com/doc/index-other.html から world database をダウンロード
+    - world.sql.zip は 2020/02/22 時点のもの
+    
 
 
 # Footnote
