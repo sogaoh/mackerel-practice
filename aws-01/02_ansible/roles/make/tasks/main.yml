@@ -1,8 +1,0 @@
----
-- name: Install make
-  apt:
-    name: [
-      'make',
-      #'make-guile',
-    ]
-  when: (ansible_distribution == "Ubuntu")

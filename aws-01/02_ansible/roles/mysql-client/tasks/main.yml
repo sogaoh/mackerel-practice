@@ -1,7 +1,0 @@
----
-- name: Install mysql-client
-  apt:
-    name: [
-      'mysql-client',
-    ]
-  when: (ansible_distribution == "Ubuntu")

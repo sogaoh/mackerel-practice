@@ -72,5 +72,63 @@ rm -f *.retry
 ```
 
 
+## Setting Contents
+
+### 01_terraform
+#### terraform.tfvars
+``` 
+region = ${Set Yours}
+
+aws_access_key = ${Set Yours}
+aws_secret_key = ${Set Yours}
+
+backend_bucket = ${Set Yours}
+
+myhome_gip = ${Set Yours}  # check http://ifconfig.io/
+
+key_name = ${Set Yours} (ex. id_rsa)
+public_key_path = ${Set Yours} (ex. id_rsa.pub)
+
+world_db_user     = ${Set Yours}
+world_db_password = ${Set Yours}
+
+
+mackerel_aws_integration_account_id  = ${Set Yours} 
+mackerel_aws_integration_external_id = ${Set Yours}
+```
+
+### 02_ansible
+### inventry
+```
+[logstash]
+docker-01   ansible_host=${Set public ip}
+
+[logstash:vars]
+ansible_ssh_user=ubuntu
+ansible_ssh_private_key_file=${Set Yours}
+ansible_become=yes
+ansible_become_user=root
+ansible_become_method=enable
+```
+
+### variables.yaml
+``` 
+mackerel_agent_apikey: "${Set Yours}"
+
+rds_endpoint: "${Set Yours}"
+rds_user: "${Set Yours}"
+rds_password: "${Set Yours}"
+
+es_domain: "${Set Yours}"
+es_arn: "${Set Yours}"
+es_endpoint: "${Set Yours}"
+
+aws_client_id: "${Set Yours}"
+aws_region: "${Set Yours}"
+aws_access_key: "${Set Yours}"
+aws_secret_key: "${Set Yours}"
+```
+
+
 # Footnote
 [^1]: バージョン切り替え時は対象をたとえば tfenv install 0.12.21 でインストールして tfenv use 0.12.21 で切り替える。現在使用中のバージョンは .terraform-version に記述されている。

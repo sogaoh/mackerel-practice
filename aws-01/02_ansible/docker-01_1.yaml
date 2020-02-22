@@ -9,10 +9,59 @@
     ansible_python_interpreter: /usr/bin/python3
     host_name: docker-01
 
+  tasks:
+    - name: Update apt
+      apt: update_cache=yes
+
+    - name: Set timezone to Asia/Tokyo
+      timezone:
+        name: Asia/Tokyo
+
+    - name: Apt Install
+      apt:
+        name: [
+          'ntpdate',
+          'chrony',
+          'bash-completion',
+          'wget',
+          'curl',
+          'rsync',
+          'git',
+          'bc',
+          'tcpdump',
+          'lsof',
+          'nfs-common',
+          'dnsutils',
+          'net-tools',
+          'procps',
+          'sysstat',
+          'zip',
+          'unzip',
+          'pigz',
+          'yum-utils',
+          'nethogs',
+          'strace',
+          'ltrace',
+          'psmisc',
+          'bsd-mailx',
+          'traceroute',
+          'snmp',
+          'snmpd',
+          'snmp-mibs-downloader',
+          'jq',
+          #
+          'tmux',
+          'make',
+          'ctop',
+          'mysql-client'
+        ]
+
+    - name: Set history format
+      copy : >
+        src=templates/history.sh.j2
+        dest=/etc/profile.d/history.sh
+        backup=yes
+
   roles:
     - hostname
-    - tmux
-    - make
-    - ctop
-    - mysql-client
     - geerlingguy.docker
