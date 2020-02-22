@@ -2,6 +2,9 @@
 ### Ansible template
 *.retry
 inventory
+variables.yaml
+geerlingguy.docker
+mackerelio.mackerel-agent
 
 
 ### Terraform template

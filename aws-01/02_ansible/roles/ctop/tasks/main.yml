@@ -1,0 +1,7 @@
+---
+- name: Install ctop
+  apt:
+    name: [
+      'ctop',
+    ]
+  when: (ansible_distribution == "Ubuntu")

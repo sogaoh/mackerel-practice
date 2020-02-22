@@ -1,0 +1,10 @@
+---
+- name: Set mackerel-agent.conf
+  lineinfile: dest=/etc/mackerel-agent/mackerel-agent.conf line={{item}} backup=yes
+  with_items:
+    - "{{ metrics_docker }}"
+    - "{{ metrics_mysql_via_integ }}"
+    - "{{ metrics_aws_elasticsearch_via_integ }}"
+    - "{{ check_elasticsearch_connectivity }}"
+  changed_when: true
+  notify: "restart mackerel-agent"

@@ -1,0 +1,8 @@
+---
+- name: Install tmux (yum)
+  yum: name=tmux
+  when: (ansible_distribution == "CentOS") or (ansible_distribution == "Amazon")
+
+- name: Install tmux (apt)
+  apt: name=tmux
+  when: (ansible_distribution == "Debian")

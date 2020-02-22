@@ -51,6 +51,10 @@ POLICIES
 }
 
 
+output "es_arn" {
+  value = aws_elasticsearch_domain.test-world-es-domain.arn
+}
+
 output "es_endpoint" {
   value = aws_elasticsearch_domain.test-world-es-domain.endpoint
 }

@@ -1,0 +1,12 @@
+---
+# for over Ubuntu 18.04
+#   when: (ansible_distribution == "Ubuntu" and ansible_distribution_release == "xenial")
+
+- hosts: all
+  become: yes
+
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+  roles:
+    - mackerel-plugins

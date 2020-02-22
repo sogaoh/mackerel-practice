@@ -1,0 +1,23 @@
+---
+metrics_docker:
+  - ''
+  - '[plugin.metrics.docker]'
+  - 'command = "/usr/bin/mackerel-plugin-docker -method API"'
+
+metrics_mysql_via_integ:
+  - ''
+  - '[plugin.metrics.mysql]'
+  - 'command = ["mackerel-plugin-mysql", "-host", "{{ rds_endpoint }}", "-username", "{{ rds_user }}", "-password", "{{ rds_password }}"]'
+  - 'custom_identifier = "{{ rds_endpoint }}"'
+
+metrics_aws_elasticsearch_via_integ:
+  - ''
+  - '[plugin.metrics.aws-elasticsearch]'
+  - 'command = "/usr/bin/mackerel-plugin-aws-elasticsearch -domain={{ es_domain }} -client-id={{}} -region={{ aws_region }} -access-key-id={{ aws_access_key }} -secret-access-key={{ aws_secret_key }}"'
+  - 'custom_identifier = "{{ es_arn }}"'
+
+check_elasticsearch_connectivity:
+  - ''
+  - '[plugin.checks.elasticsearch]'
+  - 'command = ["check-elasticsearch", "-s", "https", "-H", "{{ es_endpoint }}", "-p", "443"]'
+  - 'custom_identifier = "{{ es_arn }}"'
