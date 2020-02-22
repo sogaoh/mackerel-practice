@@ -60,11 +60,13 @@ cd ..
 (vi inventry)
 (vi variables.yaml)
 
-ansible-playbook ./docker-01.yaml          -i inventry -e @variables.yaml -u ubuntu -v -C
-ansible-playbook ./docker-01_mackerel.yaml -i inventry -e @variables.yaml -u ubuntu -v -C 
+ansible-playbook ./docker-01_1.yaml -i inventry -e @variables.yaml -u ubuntu -v -C
+ansible-playbook ./docker-01_2.yaml -i inventry -e @variables.yaml -u ubuntu -v -C 
+ansible-playbook ./docker-01_3.yaml -i inventry -e @variables.yaml -u ubuntu -v -C 
 
-ansible-playbook ./docker-01.yaml          -i inventry -e @variables.yaml -u ubuntu -vv
-ansible-playbook ./docker-01_mackerel.yaml -i inventry -e @variables.yaml -u ubuntu -vv 
+ansible-playbook ./docker-01_1.yaml -i inventry -e @variables.yaml -u ubuntu -vv
+ansible-playbook ./docker-01_2.yaml -i inventry -e @variables.yaml -u ubuntu -vv 
+ansible-playbook ./docker-01_3.yaml -i inventry -e @variables.yaml -u ubuntu -vv 
 
 rm -f *.retry
 ```
