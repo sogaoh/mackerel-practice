@@ -19,9 +19,9 @@ resource "aws_iam_role" "mackerel-aws-integration-iam-role" {
 }
 POLICY
 
-  //description          = "MackerelAWSIntegrationRole"
+  description          = "IAM Role for Mackerel AWS Integration"
   max_session_duration = "3600"
-  name                 = "MackerelAWSIntegrationRole"
+  name                 = var.mackerel_aws_integration_name
   path                 = "/"
 
   tags = {

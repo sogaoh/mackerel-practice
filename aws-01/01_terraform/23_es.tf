@@ -38,7 +38,7 @@ resource "aws_elasticsearch_domain_policy" "test-world-es_access_policy" {
                   "aws:SourceIp": [
                     "${var.myhome_gip}/32",
                     "10.1.0.0/16",
-                    "${aws_nat_gateway.default.public_ip}/32",
+                    "${aws_nat_gateway.practice-nat-gw.public_ip}/32",
                     "${aws_instance.docker-01.public_ip}/32"
                   ]
                 }

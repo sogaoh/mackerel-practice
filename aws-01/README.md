@@ -91,8 +91,6 @@ region = ${Set Yours}
 aws_access_key = ${Set Yours}
 aws_secret_key = ${Set Yours}
 
-backend_bucket = ${Set Yours}
-
 myhome_gip = ${Set Yours}  # check http://ifconfig.io/
 
 key_name = ${Set Yours} (ex. id_rsa)

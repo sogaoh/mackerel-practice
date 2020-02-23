@@ -3,7 +3,7 @@ variable "region" {}
 variable "aws_access_key" {}
 variable "aws_secret_key" {}
 
-variable "backend_bucket" {}
+#variable "backend_bucket" {}
 
 variable "aws_zone_d" {
   default = "ap-northeast-1d"
@@ -62,3 +62,4 @@ variable "ebs_volume_size_es" {
 
 variable "mackerel_aws_integration_account_id" {}
 variable "mackerel_aws_integration_external_id" {}
+variable "mackerel_aws_integration_name" {}
