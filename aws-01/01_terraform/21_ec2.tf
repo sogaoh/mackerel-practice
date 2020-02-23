@@ -14,6 +14,7 @@ resource "aws_instance" "docker-01" {
     aws_vpc.practice-vpc.default_security_group_id,
     aws_security_group.private-sg.id,
     aws_security_group.es-sg.id,
+    aws_security_group.logstash-sg.id,
   ]
   key_name = aws_key_pair.ssh-key_practice.id
 

@@ -109,6 +109,30 @@ resource "aws_security_group" "es-sg" {
 }
 
 
+resource "aws_security_group" "logstash-sg" {
+  name = "logstash-sg"
+  vpc_id = aws_vpc.practice-vpc.id
+
+  ingress {
+    from_port = 5044
+    to_port = 5044
+    protocol = "tcp"
+    cidr_blocks = ["10.1.0.0/16", "${var.myhome_gip}/32"]
+  }
+
+  ingress {
+    from_port = 9600
+    to_port = 9600
+    protocol = "tcp"
+    cidr_blocks = ["10.1.0.0/16", "${var.myhome_gip}/32"]
+  }
+
+  tags = {
+    Name = "logstash-sg_practice"
+  }
+}
+
+
 resource "aws_security_group" "db-sg" {
   name = "db-sg"
   vpc_id = aws_vpc.practice-vpc.id
