@@ -74,11 +74,49 @@ cd ..   # mackerel-practice
 ```
 
 ### 03.db_data 
+データ投入
+
 ```
 cd 03_db-data
 
+(confirm ~/.ssh/config)
 
+scp ./world.sql.zip docker-01:/home/ubuntu/
+
+ssh docker-01
+ubuntu@docker-01:~$ unzip world.sql.zip
+
+ubuntu@docker-01:~$ mysql -h test-world-db.cmlohey5j9t7.ap-northeast-1.rds.amazonaws.com world -u oreuser -p < world.sql
+Enter password: (input password)
 ```
+
+
+確認
+
+``` 
+ubuntu@docker-01:~$ mysql -h test-world-db.cmlohey5j9t7.ap-northeast-1.rds.amazonaws.com world -u oreuser -p
+Enter password: (input password)
+・・・
+mysql> show tables;
++-----------------+
+| Tables_in_world |
++-----------------+
+| city            |
+| country         |
+| countrylanguage |
++-----------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(*) FROM city;
++----------+
+| COUNT(*) |
++----------+
+|     4079 |
++----------+
+1 row in set (0.01 sec)
+```
+
+### 04.Docker(Logstash)
 
 
 ## Setting Contents, Resources
@@ -154,6 +192,24 @@ aws_secret_key: "${Set Yours}"
     - world.sql.zip は 2020/02/22 時点のもの
     
 
+## 04.Docker(Logstash)
+
+### .env
+```
+TZ=Asia/Tokyo
+JDBC_DRIVER_FILENAME=mysql-connector-java-8.0.19.jar
+RDS_ENDPOINT=${Set Yours}
+RDS_DATABASE=world
+RDS_USERNAME=${Set Yours}
+RDS_PASSWORD=${Set Yours}
+ES_ENDPOINT=${Set Yours}
+```
+
+### MySQLのJDBCコネクタ(JDBC Driver for MySQL (Connector/J)) の取得元
+- https://www.mysql.com/jp/products/connector/ [^2]
+    - Select Operating System では `Platform Independent` を選択した（2020/02/23）
+
 
 # Footnote
 [^1]: バージョン切り替え時は対象をたとえば tfenv install 0.12.21 でインストールして tfenv use 0.12.21 で切り替える。現在使用中のバージョンは .terraform-version に記述されている。
+[^2]: ダウンロードにはOracleアカウントのサインアップが必要になる
