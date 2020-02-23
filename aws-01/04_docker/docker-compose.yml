@@ -12,7 +12,7 @@ services:
       - RDS_PASSWORD=${RDS_PASSWORD}
       - ES_ENDPOINT=${ES_ENDPOINT}
     volumes:
-      - ./docker/logstash/mysql-connector-java-8.0.18.jar:/usr/share/logstash/mysql-connector-java-8.0.18.jar
+      - ./docker/logstash/mysql-connector-java-8.0.19.jar:/usr/share/logstash/mysql-connector-java-8.0.19.jar
       - ./docker/logstash/pipeline:/usr/share/logstash/pipeline
     ports:
       - 5044:5044
