@@ -117,6 +117,34 @@ mysql> SELECT COUNT(*) FROM city;
 ```
 
 ### 04.Docker(Logstash)
+``` 
+ssh docker-01
+ubuntu@docker-01:~$ git clone https://github.com/sogaoh/mackerel-practice.git
+
+cd mackerel-practice/aws-01/04_docker/
+
+(vi .env)
+
+docker-compose up -d
+```
+
+``` 
+(kibana) 
+https://${es_endpoint}/_plugin/kibana/
+
+(elasticsearch)
+https://${es_endpoint}/_cat/indices
+```
+
+
+(probably)
+
+|status1? |status2 |index         |uid |? |? |rows |? |size1 |size2|
+|--- |--- |--- |--- | ---| ---| ---| ---| ---| ---| 
+|yellow |open |country         |ZDsyvnaXRRq8D3RHmQgLrQ |5 |1 | 239 |0 |343.2kb |343.2kb|
+|yellow |open |city            |OnRcrD1jRGG8oNGRcKHBBw |5 |1 |4079 |0 |860.3kb |860.3kb|
+|yellow |open |countrylanguage |yL6peO9ITs2kgZ_2MpAk7g |5 |1 | 984 |0 |312.7kb |312.7kb|
+|green  |open |.kibana_1       |EwlMn9lnTG2oDuLp1NiiOQ |1 |0 |   1 |0 |  3.8kb |  3.8kb|
 
 
 ## Setting Contents, Resources
@@ -151,7 +179,7 @@ mackerel_aws_integration_external_id = ${Set Yours}
 ```
 
 ### 02.Ansible
-### inventry
+### inventory
 ```
 [localhost]
 127.0.0.1 ansible_connection=local
