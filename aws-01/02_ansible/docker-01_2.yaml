@@ -17,4 +17,4 @@
       apt: name=mackerel-agent-plugins
 
     - name: Install mackerel-check-plugins
-      apt: name=mackerel-agent-plugins
+      apt: name=mackerel-check-plugins
