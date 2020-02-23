@@ -6,6 +6,7 @@ services:
     container_name: logstash
     environment:
       - TZ=${TZ}
+      - JDBC_DRIVER_FILENAME=${JDBC_DRIVER_FILENAME}
       - RDS_ENDPOINT=${RDS_ENDPOINT}
       - RDS_DATABASE=${RDS_DATABASE}
       - RDS_USERNAME=${RDS_USERNAME}
