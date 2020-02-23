@@ -86,7 +86,7 @@ scp ./world.sql.zip docker-01:/home/ubuntu/
 ssh docker-01
 ubuntu@docker-01:~$ unzip world.sql.zip
 
-ubuntu@docker-01:~$ mysql -h test-world-db.cmlohey5j9t7.ap-northeast-1.rds.amazonaws.com world -u oreuser -p < world.sql
+ubuntu@docker-01:~$ mysql -h ${rds_endpoint}  world -u ${rds_user} -p < world.sql
 Enter password: (input password)
 ```
 
@@ -94,7 +94,7 @@ Enter password: (input password)
 確認
 
 ``` 
-ubuntu@docker-01:~$ mysql -h test-world-db.cmlohey5j9t7.ap-northeast-1.rds.amazonaws.com world -u oreuser -p
+ubuntu@docker-01:~$ mysql -h ${rds_endpoint} world -u ${rds_user} -p
 Enter password: (input password)
 ・・・
 mysql> show tables;
@@ -211,5 +211,5 @@ ES_ENDPOINT=${Set Yours}
 
 
 # Footnote
-[^1]: バージョン切り替え時は対象をたとえば tfenv install 0.12.21 でインストールして tfenv use 0.12.21 で切り替える。現在使用中のバージョンは .terraform-version に記述されている。
+[^1]: バージョン切り替え時は対象をたとえば tfenv install 0.12.21 でインストールして tfenv use 0.12.21 で切り替える。現在使用中のバージョンは .terraform-version に記述されている。  
 [^2]: ダウンロードにはOracleアカウントのサインアップが必要になる
