@@ -212,4 +212,4 @@ ES_ENDPOINT=${Set Yours}
 
 # Footnote
 [^1]: バージョン切り替え時は対象をたとえば tfenv install 0.12.21 でインストールして tfenv use 0.12.21 で切り替える。現在使用中のバージョンは .terraform-version に記述されている。  
-[^2]: ダウンロードにはOracleアカウントのサインアップが必要になる
+[^2]: ダウンロードにはOracleアカウントのサインアップが必要になる。
