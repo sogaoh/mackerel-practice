@@ -60,13 +60,13 @@ cd ..    # 02_ansible
 (vi inventry)
 (vi variables.yaml)
 
-ansible-playbook ./docker-01_1.yaml -i inventry                    -u ubuntu -v -C
-ansible-playbook ./docker-01_2.yaml -i inventry -e @variables.yaml -u ubuntu -v -C 
-ansible-playbook ./docker-01_3.yaml -i inventry -e @variables.yaml -u ubuntu -v -C 
+ansible-playbook ./docker-01_1.yaml -i "${public_ip},"                    -u ubuntu -v -C
+ansible-playbook ./docker-01_2.yaml -i "${public_ip}," -e @variables.yaml -u ubuntu -v -C 
+ansible-playbook ./docker-01_3.yaml -i "${public_ip}," -e @variables.yaml -u ubuntu -v -C 
 
-ansible-playbook ./docker-01_1.yaml -i inventry                    -u ubuntu -vv
-ansible-playbook ./docker-01_2.yaml -i inventry -e @variables.yaml -u ubuntu -vv 
-ansible-playbook ./docker-01_3.yaml -i inventry -e @variables.yaml -u ubuntu -vv 
+ansible-playbook ./docker-01_1.yaml -i "${public_ip},"                    -u ubuntu -vv
+ansible-playbook ./docker-01_2.yaml -i "${public_ip}," -e @variables.yaml -u ubuntu -vv 
+ansible-playbook ./docker-01_3.yaml -i "${public_ip}," -e @variables.yaml -u ubuntu -vv 
 
 rm -f *.retry
 
@@ -82,6 +82,14 @@ cd 03_db-data
 
 
 ## Setting Contents, Resources
+### 00.ssh/config
+``` 
+# docker-01
+Host docker-01
+  User ubuntu
+  Hostname ${Set docker-01 public ip}
+  IdentityFile ${Set Yours}
+```
 
 ### 01.Terraform
 #### terraform.tfvars
@@ -107,6 +115,9 @@ mackerel_aws_integration_external_id = ${Set Yours}
 ### 02.Ansible
 ### inventry
 ```
+[localhost]
+127.0.0.1 ansible_connection=local
+
 [logstash]
 docker-01   ansible_host=${Set public ip}
 

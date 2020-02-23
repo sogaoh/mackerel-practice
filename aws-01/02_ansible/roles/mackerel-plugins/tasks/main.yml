@@ -1,6 +1,11 @@
 ---
 - name: Set mackerel-agent.conf
-  lineinfile: dest=/etc/mackerel-agent/mackerel-agent.conf line={{item}} backup=yes
+  blockinfile:
+    dest: /etc/mackerel-agent/mackerel-agent.conf
+    backup: yes
+    block: |
+      {{ item.content }}
+    marker: ""
   with_items:
     - "{{ metrics_docker }}"
     - "{{ metrics_mysql_via_integ }}"
