@@ -122,6 +122,7 @@ ssh docker-01
 ubuntu@docker-01:~$ git clone https://github.com/sogaoh/mackerel-practice.git
 
 cd mackerel-practice/aws-01/04_docker/
+sudo su 
 
 (vi .env)
 

@@ -2,7 +2,7 @@ version: "2"
 
 services:
   logstash:
-    image: logstash:7.6.0
+    image: sogaoh/logstash-for-mysql-pipeline:latest
     container_name: logstash
     environment:
       - TZ=${TZ}
@@ -12,9 +12,6 @@ services:
       - RDS_USERNAME=${RDS_USERNAME}
       - RDS_PASSWORD=${RDS_PASSWORD}
       - ES_ENDPOINT=${ES_ENDPOINT}
-    volumes:
-      - ./docker/logstash/mysql-connector-java-8.0.19.jar:/usr/share/logstash/mysql-connector-java-8.0.19.jar
-      - ./docker/logstash/pipeline:/usr/share/logstash/pipeline
     ports:
       - 5044:5044
       - 9600:9600

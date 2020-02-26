@@ -29,3 +29,8 @@ POLICY
     service = "default"
   }
 }
+
+
+output "mackerel-aws-integration-iam-role_arn" {
+  value = aws_iam_role.mackerel-aws-integration-iam-role.arn
+}

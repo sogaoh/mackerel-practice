@@ -49,7 +49,7 @@ variable "instance_type_es" {
 }
 
 variable "instance_count_es" {
-  default = 1
+  default = 2
 }
 
 variable "ebs_volume_type_es" {
