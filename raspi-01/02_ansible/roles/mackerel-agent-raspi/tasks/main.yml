@@ -1,0 +1,39 @@
+---
+- name: Download mackerel-agent binary
+  get_url:
+    url: https://github.com/mackerelio/mackerel-agent/releases/download/v0.67.0/mackerel-agent_0.67.0-1.systemd_armhf.deb
+    dest: /tmp/
+
+- name: Install a .deb package
+  apt:
+    deb: /tmp/mackerel-agent_0.67.0-1.systemd_armhf.deb
+  #ignore_errors: yes
+
+
+- name: Confirm /etc/mackerel-agent directory
+  file: path=/etc/mackerel-agent state=directory owner=root group=root mode=0755
+
+- name: Set mackerel-agent config file
+  copy :
+    src: roles/mackerel-agent-raspi/templates/mackerel-agent.conf.j2
+    dest: /etc/mackerel-agent/mackerel-agent.conf
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+
+
+- name: Initialize mackerel-agent (Set API key)
+  shell: mackerel-agent init -apikey={{ mackerel_agent_apikey }} -conf /etc/mackerel-agent/mackerel-agent.conf
+  #ignore_errors: yes
+
+
+- name: Enable service mackerel-agent, and not touch the state
+  service:
+    name: mackerel-agent
+    enabled: yes
+
+- name: Start service mackerel-agent, if not started
+  service:
+    name: mackerel-agent
+    state: started
