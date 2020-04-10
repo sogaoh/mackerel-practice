@@ -1,6 +1,6 @@
 ---
 - name: Install Common Tools
-  import_playbook: ../../common/raspbian_basic.yaml
+  import_playbook: ./raspbian_basic.yaml
 
 - hosts: all
   become: yes
