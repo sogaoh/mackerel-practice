@@ -69,7 +69,7 @@ raspi-01  ansible_host=192.168.0.34
 
 [raspi:vars]
 #ansible_port=${Set if necessary}
-ansible_ssh_user=pi
+ansible_ssh_user=pi     # RaspberryPi default
 ansible_ssh_private_key_file=${Set Yours}
 ansible_become=yes
 ansible_become_user=root
@@ -78,9 +78,9 @@ ansible_become_method=enable
 
 # Appendix
 ## Sub modules
-- [mackerel-agent-raspi](mackerel-agent-raspi)
-- [mackerel-plugins-raspi](mackerel-plugins-raspi)
-- [speedtest_net-cli-raspi](speedtest_net-cli-raspi)
+- [mackerel-agent-raspi](roles/mackerel-agent-raspi)
+- [mackerel-plugins-raspi](roles/mackerel-plugins-raspi)
+- [speedtest_net-cli-raspi](roles/speedtest_net-cli-raspi)
 
 
 <!-- 
