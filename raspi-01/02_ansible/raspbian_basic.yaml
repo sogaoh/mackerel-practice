@@ -1,0 +1,25 @@
+---
+# for Raspbian
+#   when: (ansible_distribution == "Debian" and ansible_distribution_release == "buster")
+
+- hosts: all
+  become: yes
+
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+  tasks:
+    - name: Apt Install
+      apt:
+        name: [ 
+            'bash-completion',
+            'tmux',
+            'bc',
+            'jq'
+        ]
+
+    - name: Set history format
+      copy : >
+        src=templates/history.sh.j2
+        dest=/etc/profile.d/history.sh
+        backup=yes

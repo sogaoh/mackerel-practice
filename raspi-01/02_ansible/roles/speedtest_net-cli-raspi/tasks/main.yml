@@ -1,0 +1,40 @@
+---
+# @see https://www.speedtest.net/ja/apps/cli
+
+- name: Apt Install
+  apt:
+    name: [
+      'gnupg1',
+      'apt-transport-https',
+      'dirmngr',
+    ]
+
+
+- name: Get DEB_DISTRO
+  command: lsb_release -sc
+  register: deb_distro
+  changed_when: false
+  failed_when: false
+
+#- debug: var=deb_distro
+
+
+- name: Add an apt key by id from a keyserver
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 379CE192D401AB61
+
+
+- name: Write /etc/apt/sources.list.d/speedtest.list
+  shell: echo 'deb https://ookla.bintray.com/debian {{ deb_distro.stdout }} main' | sudo tee  /etc/apt/sources.list.d/speedtest.list
+  #ignore_errors: yes
+
+
+- name: Update apt
+  apt: update_cache=yes
+
+
+- name: Install speedtest
+  apt:
+    name: speedtest
+    state: present

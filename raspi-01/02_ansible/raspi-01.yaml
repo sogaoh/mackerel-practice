@@ -1,0 +1,13 @@
+---
+- name: Install Common Tools
+  import_playbook: ./raspbian_basic.yaml
+
+- hosts: all
+  become: yes
+
+  roles:
+#    - hostname
+    - mackerel-agent-raspi
+#    - golang-raspi
+    - mackerel-plugins-raspi
+    - speedtest_net-cli-raspi

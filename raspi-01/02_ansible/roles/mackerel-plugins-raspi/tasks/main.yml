@@ -1,0 +1,53 @@
+---
+- name: Install mackerel-agent-plugins
+  shell: GO111MODULE=on /usr/local/go/bin/go get github.com/mackerelio/mackerel-agent-plugins
+
+- name: Set mackerel-agent-plugins to bin
+  shell: sudo cp -p ~/go/bin/mackerel-agent-plugins /usr/bin/
+  #ignore_errors: yes
+
+
+- name: Install go-check-plugins
+  shell: GO111MODULE=on /usr/local/go/bin/go get github.com/mackerelio/go-check-plugins
+
+- name: Set go-check-plugins to bin
+  shell: sudo cp -p ~/go/bin/go-check-plugins /usr/bin/
+  #ignore_errors: yes
+
+
+- name: Install mkr
+  shell: GO111MODULE=on /usr/local/go/bin/go get github.com/mackerelio/mkr
+
+- name: Set mkr to bin
+  shell: sudo cp -p ~/go/bin/mkr /usr/bin/
+  #ignore_errors: yes
+
+
+- name: Confirm /opt/scripts directory
+  file: path=/opt/scripts state=directory owner=root group=root mode=0755
+
+- name: Copy cpu_temperature.sh to /opt/scripts directory
+  copy:
+    src: roles/mackerel-plugins-raspi/templates/cpu_temperature.sh.j2
+    dest: /opt/scripts/cpu_temperature.sh
+    owner: root
+    group: root
+    mode: +x
+
+
+- name: Set mackerel-agent.conf
+  blockinfile:
+    dest: /etc/mackerel-agent/mackerel-agent.conf
+    backup: yes
+    block: |
+      {{ item.content }}
+    marker: ""
+  with_items:
+    - "{{ metrics_linux }}"
+    - "{{ metrics_multicore }}"
+    - "{{ metrics_conntrack }}"
+    - "{{ metrics_inode }}"
+    - "{{ check_disk }}"
+    - "{{ metrics_temperature_cpu }}"
+  changed_when: true
+  notify: "restart mackerel-agent"

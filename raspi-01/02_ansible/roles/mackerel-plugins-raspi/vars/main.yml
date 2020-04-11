@@ -1,0 +1,33 @@
+---
+metrics_linux:
+  content: |
+    [plugin.metrics.linux]
+    command = ["mackerel-agent-plugins", "linux"]
+
+metrics_multicore:
+  content: |
+    [plugin.metrics.multicore]
+    command = ["mackerel-agent-plugins", "multicore"]
+
+metrics_conntrack:
+  content: |
+    [plugin.metrics.conntrack]
+    command = ["mackerel-agent-plugins", "conntrack"]
+
+metrics_inode:
+  content: |
+    [plugin.metrics.inode]
+    command = ["mackerel-agent-plugins", "inode"]
+
+
+check_disk:
+  content: |
+    [plugin.checks.disk]
+    command = ["go-check-plugins", "disk", "-w", "25%", "-c", "15%", "-p", "/"]
+
+
+metrics_temperature_cpu:
+  content: |
+    [plugin.metrics.temperature_cpu]
+    command = "/opt/scripts/cpu_temperature.sh"
+
