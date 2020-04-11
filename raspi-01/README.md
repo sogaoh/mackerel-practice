@@ -78,9 +78,9 @@ ansible_become_method=enable
 
 # Appendix
 ## Sub modules
-- [mackerel-agent-raspi](roles/mackerel-agent-raspi)
-- [mackerel-plugins-raspi](roles/mackerel-plugins-raspi)
-- [speedtest_net-cli-raspi](roles/speedtest_net-cli-raspi)
+- [mackerel-agent-raspi](02_ansible/roles/mackerel-agent-raspi)
+- [mackerel-plugins-raspi](02_ansible/roles/mackerel-plugins-raspi)
+- [speedtest_net-cli-raspi](02_ansible/roles/speedtest_net-cli-raspi)
 
 
 <!-- 
