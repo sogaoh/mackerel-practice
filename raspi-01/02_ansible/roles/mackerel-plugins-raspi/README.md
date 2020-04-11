@@ -3,16 +3,15 @@ a Ansible Role
 
 
 ## What's this ?
-- Raspberry Pi (4) で Mackerel を利用したモニタリングを行うべく
+- Raspberry Pi (4) で Mackerel を利用したモニタリングを行うべく  
   plugins を簡素にセットアップしたくて適当に作成した Ansible Role .
 
 
 ## Prerequirement
 - 対象の Raspberry Pi 機種
     - SSH接続設定
-- golang のインストール + PATH が効いてる状態
-    - refs ...
-
+    - golang のインストール 
+        - /usr/local/go/bin/go が利用可能
 
 ## Usage
 - Get and Set `mackerel-plugins-raspi`
