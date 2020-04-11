@@ -37,3 +37,5 @@ a Ansible Role
 
 
 ## Assumed Result
+![](mackerel-raspi-3.png)
+![](mackerel-raspi-4.png)

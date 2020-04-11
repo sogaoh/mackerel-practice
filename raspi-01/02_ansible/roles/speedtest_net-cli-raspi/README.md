@@ -32,3 +32,41 @@ a Ansible Role
 
 
 ## Assumed Result
+```bash
+
+# speedtest -f json-pretty
+{
+    "type": "result",
+    "timestamp": "2020-04-11T09:06:53Z",
+    "ping": {
+        "jitter": 28.635999999999999,
+        "latency": 29.620999999999999
+    },
+    "download": {
+        "bandwidth": 23175090,
+        "bytes": 284893272,
+        "elapsed": 15004
+    },
+    "upload": {
+        "bandwidth": 530434,
+        "bytes": 7653352,
+        "elapsed": 15001
+    },
+    "isp": "XXXXXXXXXXXX",
+    "interface": {
+        "internalIp": "192.168.0.34",
+        "name": "eth0",
+        "macAddr": "XX:XX:XX:XX:XX:XX",
+        "isVpn": false,
+        "externalIp": "XXX.XXX.XXX.XXX"
+    },
+    "server": {
+        "country": "Japan",
+    },
+    "result": {
+        "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    }
+}
+```
+
+(bandwidth:Mbps => bandwidth * 8 / 1000 / 1000)

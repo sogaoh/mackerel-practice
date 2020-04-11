@@ -27,10 +27,12 @@ until [ $COMMAND_STATUS -eq 0 -o $NUM_OF_ATTEMPTS -eq 4 ]; do
   else
     COMMAND_STATUS=2
   fi
-  sleep 45
   let NUM_OF_ATTEMPTS=NUM_OF_ATTEMPTS+1
   DATETIME=`date "+%Y/%m/%d %H:%M:%S"`
   echo "[$DATETIME] #$NUM_OF_ATTEMPTS -> $COMMAND_STATUS ($COMMAND_RESULT)" >> $LOGFILE
+  if [ $COMMAND_STATUS -ne 0 ]; then
+    sleep 45
+  fi
 done
 
 if [ $NUM_OF_ATTEMPTS -ge 4 -a $COMMAND_STATUS -ne 0 ]; then
@@ -48,6 +50,7 @@ BW2=`cat $JSONFILE | jq ".upload.bandwidth"`
 VALUE2=`echo "scale=2; ${BW2} * 8 / 1000 / 1000" | bc`
 echo -e "${NAME2}\t${VALUE2}\t${SECONDS}"
 
-rm -f $JSONFILE
+#rm -f $JSONFILE
+mv $JSONFILE "${JSONFILE}.last"
 
 exit 0
