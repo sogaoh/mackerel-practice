@@ -2,7 +2,7 @@
 a Ansible Role
 
 ## What's this ?
-- Raspberry Pi (4) に mackerel-agent をインストールしてモニタリングを行うべく
+- Raspberry Pi (4) に mackerel-agent をインストールしてモニタリングを行うべく  
   簡素にセットアップしたくて適当に作成した Ansible Role .
 
 ## Prerequirement
@@ -36,3 +36,5 @@ a Ansible Role
 
 
 ## Assumed Result
+![](mackerel-raspi-1.png)
+![](mackerel-raspi-2.png)

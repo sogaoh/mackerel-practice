@@ -14,7 +14,7 @@ refs
     - Assemble
     - Initial setup
         - refs [RaspberryPi起点で自宅インターネット回線のモニタリング作戦 (1/4 : RaspberryPi4 セットアップ) - Qrunch](https://qrunch.net/@sogaoh/entries/h4u7lYcCtrOx24Fo)
-    - SSH connect configuration (for running `ansible-playbook`)
+    - SSH connect configure (for running `ansible-playbook`)
 
 - Local 
     - install Ansible
@@ -25,7 +25,64 @@ refs
 
 
 ## Execution procedure
-[WIP]
+```
+cd ${your_appropriate_directory}
+git clone https://github.com/sogaoh/mackerel-practice.git
+
+cd mackerel-practice
+```
+
+```
+
+cd 02_ansible/roles
+#ansible-galaxy install mackerelio.mackerel-agent
+#mv ${/path/to/.ansible}/roles/* ./ 
+cd ..    # 02_ansible
+
+(vi inventry)
+(vi variables.yaml)
+
+ansible-playbook ./raspi-01.yaml -i "[target host IP, etc...],"  -e @variables.yaml --ask-become-pass -v -C
+
+ansible-playbook ./raspi-01.yaml -i "[target host IP, etc...],"  -e @variables.yaml --ask-become-pass -vv
+
+rm -f *.retry
+
+cd ..   # mackerel-practice
+```
 
 
+## Setting Contents, Resources
+
+## variables.yaml
+``` 
+mackerel_agent_apikey: "${Set Yours}"
+```
+
+## inventory (if necessary)
+```
+[localhost]
+127.0.0.1 ansible_connection=local
+
+[raspi]
+raspi-01  ansible_host=192.168.0.34
+
+[raspi:vars]
+#ansible_port=${Set if necessary}
+ansible_ssh_user=pi
+ansible_ssh_private_key_file=${Set Yours}
+ansible_become=yes
+ansible_become_user=root
+ansible_become_method=enable
+```
+
+# Appendix
+## Sub modules
+- [mackerel-agent-raspi](mackerel-agent-raspi)
+- [mackerel-plugins-raspi](mackerel-plugins-raspi)
+- [speedtest_net-cli-raspi](speedtest_net-cli-raspi)
+
+
+<!-- 
 # Footnote
+-->
