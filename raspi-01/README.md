@@ -57,6 +57,7 @@ cd ..   # mackerel-practice
 ## variables.yaml
 ``` 
 mackerel_agent_apikey: "${Set Yours}"
+service_to_post: "${Set Service}"
 ```
 
 ## inventory (if necessary)
@@ -81,6 +82,7 @@ ansible_become_method=enable
 - [mackerel-agent-raspi](02_ansible/roles/mackerel-agent-raspi)
 - [mackerel-plugins-raspi](02_ansible/roles/mackerel-plugins-raspi)
 - [speedtest_net-cli-raspi](02_ansible/roles/speedtest_net-cli-raspi)
+- [sardine_service-raspi](02_ansible/roles/sardine_service-raspi)
 
 
 <!-- 
