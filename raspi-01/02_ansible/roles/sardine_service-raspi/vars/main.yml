@@ -6,9 +6,12 @@ check_sardine:
 
 check_log_speedtest:
   content: |
-    [plugin.checks.check_log_speedtest_1]
-    command = ["go-check-plugins", "log", "--file", "/opt/sardine/speedtest-service.log", "--pattern", "-> 1", "-w", "0", "--return"]
-    [plugin.checks.check_log_speedtest_2]
-    command = ["go-check-plugins", "log", "--file", "/opt/sardine/speedtest-service.log", "--pattern", "-> 2", "-w", "0", "--return"]
-    [plugin.checks.check_log_speedtest_3]
-    command = ["go-check-plugins", "log", "--file", "/opt/sardine/speedtest-service.log", "--pattern", "-> 3", "-w", "0", "--return"]
+    [plugin.checks.check_log_speedtest_retry_1]
+    command = ["go-check-plugins", "log", "--file", "/opt/sardine/speedtest-service.log", "--pattern", "#2", "-w", "2", "-c", "3", "--return"]
+    check_interval = 10
+    [plugin.checks.check_log_speedtest_retry_2]
+    command = ["go-check-plugins", "log", "--file", "/opt/sardine/speedtest-service.log", "--pattern", "#3", "-w", "1", "-c", "2", "--return"]
+    check_interval = 5
+    [plugin.checks.check_log_speedtest_retry_3]
+    command = ["go-check-plugins", "log", "--file", "/opt/sardine/speedtest-service.log", "--pattern", "#4", "-w", "0", "-c", "1", "--return"]
+    check_interval = 2

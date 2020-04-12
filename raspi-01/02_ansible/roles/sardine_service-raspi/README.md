@@ -12,10 +12,9 @@ a Ansible Role
     - golang のインストール 
         - /usr/local/go/bin/go が利用可能
     - mackerel-plugins のインストール
+        - mackerel-agent-plugins
+        - **go-check-plugins** (for プロセス監視, ログ監視)
     - speedtest_net-cli のインストール
-    - MACKEREL_APIKEY 環境変数の設定
-        - raspbian_sardine-prepare.yaml Playbook で適用可能  
-        `ansible-playbook ./raspbian_sardine-prepare.yaml -i "[target host IP, etc...],"  -e @variables.yaml -vv -C`
 
 ## Usage
 - Get and Set `sardine_service-raspi`
@@ -37,6 +36,7 @@ a Ansible Role
         ##- golang-raspi
         #- mackerel-plugins-raspi
         #- speedtest_net-cli-raspi
+        ##- sardine-raspi
         - sardine_service-raspi  
     ```
 - Prepare variables.yaml (on same place as playbook)
