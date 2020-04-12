@@ -15,6 +15,8 @@ a Ansible Role
         - mackerel-agent-plugins
         - **go-check-plugins** (for プロセス監視, ログ監視)
     - speedtest_net-cli のインストール
+    - [sardine](https://github.com/fujiwara/sardine) のインストール
+        - git clone -> cd sardine -> make install
 
 ## Usage
 - Get and Set `sardine_service-raspi`
@@ -49,3 +51,6 @@ a Ansible Role
 
 
 ## Assumed Result
+![](mackerel-raspi-5.png)
+
+<img alt="check" src="mackerel-raspi-6.png" />
