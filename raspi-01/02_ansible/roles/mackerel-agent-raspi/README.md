@@ -13,11 +13,11 @@ a Ansible Role
 - Get and Set `mackerel-agent-raspi`
     - ex) 
         ```
-        git clone https://github.com/sogaoh/AnsiblePractice.git
-        cd AnsiblePractice/roles
+        git clone https://github.com/sogaoh/mackerel-practice.git
+        cd mackerel-practice/roles
         mv mackerel-agent-raspi ${your_properly_roles_directory}/
         cd ../..
-        rm -rf AnsiblePractice
+        rm -rf mackerel-practice
         ```
 - Prepare playbook (Sample is below:)
     ```
@@ -32,7 +32,7 @@ a Ansible Role
     mackerel_agent_apikey: <YOUR_API_KEY>
     ```
 - Run playbook
-    - ex) `ansible-playbook ./my-raspi.yaml -i "[target host IP, etc...],"  -e @variables.yaml --ask-become-pass -vv -C`
+    - ex) `ansible-playbook ./my-raspi.yaml -i "[target host IP, etc...],"  -e @variables.yaml -vv -C`
 
 
 ## Assumed Result

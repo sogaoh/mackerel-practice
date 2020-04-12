@@ -1,0 +1,14 @@
+---
+check_sardine:
+  content: |
+    [plugin.checks.check_sardine]
+    command = ["go-check-plugins", "procs", "--pattern", "sardine", "-C", "1"]
+
+check_log_speedtest:
+  content: |
+    [plugin.checks.check_log_speedtest_1]
+    command = ["go-check-plugins", "log", "--file", "/opt/sardine/speedtest-service.log", "--pattern", "-> 1", "-w", "0", "--return"]
+    [plugin.checks.check_log_speedtest_2]
+    command = ["go-check-plugins", "log", "--file", "/opt/sardine/speedtest-service.log", "--pattern", "-> 2", "-w", "0", "--return"]
+    [plugin.checks.check_log_speedtest_3]
+    command = ["go-check-plugins", "log", "--file", "/opt/sardine/speedtest-service.log", "--pattern", "-> 3", "-w", "0", "--return"]

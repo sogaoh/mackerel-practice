@@ -1,13 +1,18 @@
 ---
-- name: Install Common Tools
-  import_playbook: ./raspbian_basic.yaml
+#- name: Install Common Tools
+#  import_playbook: ./raspbian_basic.yaml
 
 - hosts: all
   become: yes
 
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
   roles:
-#    - hostname
-    - mackerel-agent-raspi
-#    - golang-raspi
-    - mackerel-plugins-raspi
-    - speedtest_net-cli-raspi
+##    - hostname
+#    - mackerel-agent-raspi
+##    - golang-raspi
+#    - mackerel-plugins-raspi
+#    - speedtest_net-cli-raspi
+    - sardine_service-raspi
+

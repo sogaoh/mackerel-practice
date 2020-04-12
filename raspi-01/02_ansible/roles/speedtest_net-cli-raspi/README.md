@@ -13,11 +13,11 @@ a Ansible Role
 - Get and Set `speedtest_net-cli-raspi`
     - ex) 
         ```
-        git clone https://github.com/sogaoh/AnsiblePractice.git
-        cd AnsiblePractice/roles
+        git clone https://github.com/sogaoh/mackerel-practice.git
+        cd mackerel-practice/roles
         mv speedtest_net-cli-raspi ${your_properly_roles_directory}/
         cd ../..
-        rm -rf AnsiblePractice
+        rm -rf mackerel-practice
         ```
 - Prepare playbook (Sample is below:)
     ```
@@ -28,7 +28,7 @@ a Ansible Role
         - speedtest_net-cli-raspi
     ```
 - Run playbook
-    - ex) `ansible-playbook ./my-raspi.yaml -i "[target host IP, etc...]," --ask-become-pass -vv -C`
+    - ex) `ansible-playbook ./my-raspi.yaml -i "[target host IP, etc...]," -vv -C`
 
 
 ## Assumed Result

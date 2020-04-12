@@ -1,0 +1,15 @@
+[Unit]
+Description=sardine-agent
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/sardine
+ExecStart=sudo MACKEREL_APIKEY="{{ mackerel_agent_apikey }}" /root/go/bin/sardine -config /opt/sardine/speedtest-service.conf
+TimeoutStopSec=5
+StandardOutput=append:/opt/sardine/sardine-agent.stdout
+StandardError=append:/opt/sardine/sardine-agent.stderr
+User=root
+Group=root
+
+[Install]
+WantedBy = multi-user.target

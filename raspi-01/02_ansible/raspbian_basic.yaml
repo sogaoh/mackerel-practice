@@ -15,7 +15,9 @@
             'bash-completion',
             'tmux',
             'bc',
-            'jq'
+            'jq',
+            'gettext',
+            'checkinstall'
         ]
 
     - name: Set history format

@@ -1,0 +1,13 @@
+---
+# for Raspbian
+#   when: (ansible_distribution == "Debian" and ansible_distribution_release == "buster")
+
+- hosts: all
+  become: yes
+
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+  tasks:
+    - name: Write /etc/profile.d/sardine_env.sh
+      shell: echo 'MACKEREL_APIKEY={{ mackerel_agent_apikey }}' | sudo tee /etc/profile.d/sardine_env.sh

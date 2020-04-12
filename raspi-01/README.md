@@ -42,9 +42,11 @@ cd ..    # 02_ansible
 (vi inventry)
 (vi variables.yaml)
 
-ansible-playbook ./raspi-01.yaml -i "[target host IP, etc...],"  -e @variables.yaml --ask-become-pass -v -C
+ansible-playbook ./raspbian_sardine-prepare.yaml -i "[target host IP, etc...],"  -e @variables.yaml -v -C
+ansible-playbook ./raspi-01.yaml -i "[target host IP, etc...],"  -e @variables.yaml -v -C
 
-ansible-playbook ./raspi-01.yaml -i "[target host IP, etc...],"  -e @variables.yaml --ask-become-pass -vv
+ansible-playbook ./raspbian_sardine-prepare.yaml -i "[target host IP, etc...],"  -e @variables.yaml -vv
+ansible-playbook ./raspi-01.yaml -i "[target host IP, etc...],"  -e @variables.yaml -vv
 
 rm -f *.retry
 

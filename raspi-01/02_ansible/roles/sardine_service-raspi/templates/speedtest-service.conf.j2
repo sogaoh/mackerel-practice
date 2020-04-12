@@ -1,0 +1,6 @@
+[plugin.metrics.bandwidth]
+command     = "/opt/scripts/speedtest-service.sh"
+destination = "Mackerel"
+service     = "{{ service_to_post }}"
+interval    = "300s"
+timeout     = "200s"

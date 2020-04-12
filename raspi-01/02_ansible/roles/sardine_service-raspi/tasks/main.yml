@@ -1,0 +1,54 @@
+---
+- name: Set /opt/scripts/speedtest-service.sh
+  copy :
+    src: roles/sardine_service-raspi/templates/speedtest-service.sh.j2
+    dest: /opt/scripts/speedtest-service.sh
+    owner: root
+    group: root
+    mode: 0755
+    backup: yes
+
+
+- name: Set /opt/sardine/speedtest-service.conf
+  template :
+    src: roles/sardine_service-raspi/templates/speedtest-service.conf.j2
+    dest: /opt/sardine/speedtest-service.conf
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+
+
+- name: Set sardine-agent service file
+  template :
+    src: roles/sardine_service-raspi/templates/sardine-agent.service.j2
+    dest: /etc/systemd/system/sardine-agent.service
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+
+
+- name: Enable service sardine-agent, and not touch the state
+  service:
+    name: sardine-agent
+    enabled: yes
+
+- name: Start service sardine-agent, if not started
+  service:
+    name: sardine-agent
+    state: started
+
+
+- name: Set sardine process monitoring to mackerel-agent.conf
+  blockinfile:
+    dest: /etc/mackerel-agent/mackerel-agent.conf
+    backup: yes
+    block: |
+      {{ item.content }}
+    marker: ""
+  with_items:
+    - "{{ check_sardine }}"
+    - "{{ check_log_speedtest }}"
+  changed_when: true
+  notify: "restart mackerel-agent"
