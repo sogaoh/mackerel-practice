@@ -42,9 +42,9 @@ cd ..    # 02_ansible
 (vi inventry)
 (vi variables.yaml)
 
-ansible-playbook ./raspi-01.yaml -i "[target host IP, etc...],"  -e @variables.yaml --ask-become-pass -v -C
+ansible-playbook ./raspi-01.yaml -i "[target host IP, etc...],"  -e @variables.yaml -v -C
 
-ansible-playbook ./raspi-01.yaml -i "[target host IP, etc...],"  -e @variables.yaml --ask-become-pass -vv
+ansible-playbook ./raspi-01.yaml -i "[target host IP, etc...],"  -e @variables.yaml -vv
 
 rm -f *.retry
 
@@ -69,7 +69,7 @@ raspi-01  ansible_host=192.168.0.34
 
 [raspi:vars]
 #ansible_port=${Set if necessary}
-ansible_ssh_user=pi
+ansible_ssh_user=pi     # RaspberryPi default
 ansible_ssh_private_key_file=${Set Yours}
 ansible_become=yes
 ansible_become_user=root
@@ -78,9 +78,9 @@ ansible_become_method=enable
 
 # Appendix
 ## Sub modules
-- [mackerel-agent-raspi](mackerel-agent-raspi)
-- [mackerel-plugins-raspi](mackerel-plugins-raspi)
-- [speedtest_net-cli-raspi](speedtest_net-cli-raspi)
+- [mackerel-agent-raspi](02_ansible/roles/mackerel-agent-raspi)
+- [mackerel-plugins-raspi](02_ansible/roles/mackerel-plugins-raspi)
+- [speedtest_net-cli-raspi](02_ansible/roles/speedtest_net-cli-raspi)
 
 
 <!-- 

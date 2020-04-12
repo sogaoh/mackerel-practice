@@ -5,12 +5,14 @@ SECONDS=`date '+%s'`
 cd .
 
 COMMAND="speedtest -s 6087 -f json"
-JSONFILE="./speedtest-attempts.json"
-LOGFILE="./speedtest-attempts.log"
+JSONFILE="./speedtest-service.json"
+LOGFILE="./speedtest-service.log"
 JUDGE_KEY=".type"
 OK_VALUE="\"result\""
 
 # json に result がなかったら45秒待ってリトライ。３回目も失敗したら exit -1
+# download が 10 Mbps 以下のときもリトライする。(1)
+# 結果取得できてない (2), 結果ファイルが生成されてない (3) 場合もリトライ。
 NUM_OF_ATTEMPTS=0
 COMMAND_STATUS=1
 until [ $COMMAND_STATUS -eq 0 -o $NUM_OF_ATTEMPTS -eq 4 ]; do
@@ -20,12 +22,18 @@ until [ $COMMAND_STATUS -eq 0 -o $NUM_OF_ATTEMPTS -eq 4 ]; do
   if [[ -e $JSONFILE ]]; then
     COMMAND_RESULT=`cat $JSONFILE | jq $JUDGE_KEY`
     if [[ $COMMAND_RESULT = $OK_VALUE ]]; then
-      COMMAND_STATUS=0
+      BW=`cat $JSONFILE | jq ".download.bandwidth"`
+      VAL=`echo "scale=2; ${BW} * 8 / 1000 / 1000" | bc`
+      if [ `echo "$VAL > 10.0" | bc` = 1  ]; then
+        COMMAND_STATUS=0
+      else
+        COMMAND_STATUS=1
+      fi
     else
-      COMMAND_STATUS=1
+      COMMAND_STATUS=2
     fi
   else
-    COMMAND_STATUS=2
+    COMMAND_STATUS=3
   fi
   let NUM_OF_ATTEMPTS=NUM_OF_ATTEMPTS+1
   DATETIME=`date "+%Y/%m/%d %H:%M:%S"`
