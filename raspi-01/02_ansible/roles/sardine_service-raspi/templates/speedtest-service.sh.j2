@@ -18,11 +18,12 @@ COMMAND_STATUS=1
 until [ $COMMAND_STATUS -eq 0 -o $NUM_OF_ATTEMPTS -eq 4 ]; do
   DATETIME=`date "+%Y/%m/%d %H:%M:%S"`
   echo "[$DATETIME] #$NUM_OF_ATTEMPTS" >> $LOGFILE
+  BW="?"
   $COMMAND > $JSONFILE
   if [[ -e $JSONFILE ]]; then
     COMMAND_RESULT=`cat $JSONFILE | jq $JUDGE_KEY`
     if [[ $COMMAND_RESULT = $OK_VALUE ]]; then
-      BW=`cat $JSONFILE | jq ".download.bandwidth"`
+      let BW=`cat $JSONFILE | jq ".download.bandwidth"`
       VAL=`echo "scale=2; ${BW} * 8 / 1000 / 1000" | bc`
       if [ `echo "$VAL > 10.0" | bc` = 1  ]; then
         COMMAND_STATUS=0
@@ -37,13 +38,15 @@ until [ $COMMAND_STATUS -eq 0 -o $NUM_OF_ATTEMPTS -eq 4 ]; do
   fi
   let NUM_OF_ATTEMPTS=NUM_OF_ATTEMPTS+1
   DATETIME=`date "+%Y/%m/%d %H:%M:%S"`
-  echo "[$DATETIME] #$NUM_OF_ATTEMPTS -> $COMMAND_STATUS ($COMMAND_RESULT)" >> $LOGFILE
+  echo "[$DATETIME] #$NUM_OF_ATTEMPTS -> $COMMAND_STATUS ($COMMAND_RESULT) Bandwidth=$BW" >> $LOGFILE
   if [ $COMMAND_STATUS -ne 0 ]; then
     sleep 45
   fi
 done
 
 if [ $NUM_OF_ATTEMPTS -ge 4 -a $COMMAND_STATUS -ne 0 ]; then
+  DATETIME=`date "+%Y/%m/%d %H:%M:%S"`
+  echo "[$DATETIME] #$NUM_OF_ATTEMPTS -> $COMMAND_STATUS" >> $LOGFILE
   exit -1
 fi
 
