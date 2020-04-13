@@ -44,7 +44,7 @@ until [ $COMMAND_STATUS -eq 0 -o $NUM_OF_ATTEMPTS -eq 4 ]; do
   fi
 done
 
-if [ $NUM_OF_ATTEMPTS -ge 4 -a $COMMAND_STATUS -ne 0 ]; then
+if [ $NUM_OF_ATTEMPTS -ge 4 -o $COMMAND_STATUS -ne 0 ]; then
   DATETIME=`date "+%Y/%m/%d %H:%M:%S"`
   echo "[$DATETIME] #$NUM_OF_ATTEMPTS -> $COMMAND_STATUS" >> $LOGFILE
   exit -1
