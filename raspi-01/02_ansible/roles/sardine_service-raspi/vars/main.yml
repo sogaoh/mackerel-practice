@@ -7,7 +7,7 @@ check_sardine:
 check_log_speedtest:
   content: |
     [plugin.checks.check_log_speedtest_retry_1]
-    command = ["go-check-plugins", "log", "--file", "/opt/sardine/speedtest-service.log", "--pattern", "#2 ", "-w", "2", "-c", "3", "--return"]
+    command = ["go-check-plugins", "log", "--file", "/opt/sardine/speedtest-service.log", "--pattern", "#2 ", "-w", "2", "-c", "4", "--return"]
     check_interval = 12
     [plugin.checks.check_log_speedtest_retry_2]
     command = ["go-check-plugins", "log", "--file", "/opt/sardine/speedtest-service.log", "--pattern", "#3 ", "-w", "1", "-c", "2", "--return"]
