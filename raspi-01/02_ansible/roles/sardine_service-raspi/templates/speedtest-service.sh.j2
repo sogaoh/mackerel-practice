@@ -46,7 +46,7 @@ done
 
 if [ $NUM_OF_ATTEMPTS -ge 4 -o $COMMAND_STATUS -ne 0 ]; then
   DATETIME=`date "+%Y/%m/%d %H:%M:%S"`
-  echo "[$DATETIME] #$NUM_OF_ATTEMPTS -> $COMMAND_STATUS" >> $LOGFILE
+  echo "[$DATETIME] #-1 -> $COMMAND_STATUS" >> $LOGFILE
   exit -1
 fi
 
