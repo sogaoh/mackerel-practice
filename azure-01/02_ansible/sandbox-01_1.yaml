@@ -10,12 +10,12 @@
 
   vars:
     ansible_python_interpreter: /usr/bin/python3
-    #host_name: sandbox-01
+    host_name: sandbox-01
 
   tasks:
-    #- name: set hostname
-    #  become: true
-    #  hostname: name={{host_name}}
+    - name: set hostname
+      become: true
+      hostname: name={{host_name}}
 
     - name: Apt Install
       apt:
