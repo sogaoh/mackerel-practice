@@ -1,6 +1,6 @@
 # mackerel-practice/azure-01 
 
-Azure の VM をモニタリングする の環境構築コード
+Azureインテグレーションを利用してモニタリングする の環境構築コード
 
 refs 
 - Pubs/Mackerel Ambassador (sogaoh) blogs/
@@ -26,7 +26,6 @@ refs
 
 - Sign up https://mackerel.io/
     - confirm API key 
-    - confirm `Mackerel AWS Integration External ID` (see https://mackerel.io/ja/docs/entry/integrations/aws )
 
 
 ## Execution procedure
@@ -98,13 +97,13 @@ vm_admin_ssh_public_key = "ssh-rsa... ${Set Yours}"
 ```
 
 ### 02.Ansible
-### inventory
+### inventory (Optional)
 ```
 [localhost]
 127.0.0.1 ansible_connection=local
 
 [sandbox]
-docker-01   ansible_host=${Set public ip}
+sandbox-01   ansible_host=${Set public ip}
 
 [sandbox:vars]
 ansible_ssh_user=${Set Yours}
@@ -117,7 +116,6 @@ ansible_become_method=enable
 ### variables.yaml
 ``` 
 mackerel_agent_apikey: "${Set Yours}"
-
 ```
 
 
