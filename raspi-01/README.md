@@ -29,7 +29,7 @@ refs
 cd ${your_appropriate_directory}
 git clone https://github.com/sogaoh/mackerel-practice.git
 
-cd mackerel-practice
+cd mackerel-practice/raspi-01
 ```
 
 ```
@@ -48,7 +48,7 @@ ansible-playbook ./raspi-01.yaml -i "[target host IP, etc...],"  -e @variables.y
 
 rm -f *.retry
 
-cd ..   # mackerel-practice
+cd ../..   # mackerel-practice
 ```
 
 

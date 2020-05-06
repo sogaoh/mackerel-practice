@@ -1,0 +1,20 @@
+---
+# for over Ubuntu 18.04
+#   when: (ansible_distribution == "Ubuntu" and ansible_distribution_release == "xenial")
+
+- hosts: all
+  become: yes
+
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+#   mackerel_agent_apikey: "YOUR_API_KEY"
+
+  roles:
+    - mackerelio.mackerel-agent
+
+  tasks:
+    - name: Install mackerel-agent-plugins
+      apt: name=mackerel-agent-plugins
+
+    - name: Install mackerel-check-plugins
+      apt: name=mackerel-check-plugins

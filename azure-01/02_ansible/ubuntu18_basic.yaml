@@ -1,0 +1,59 @@
+---
+# for over Ubuntu 18.04
+#   when: (ansible_distribution == "Ubuntu" and ansible_distribution_release == "xenial")
+
+- hosts: all
+  become: yes
+
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+  tasks:
+    - name: Update apt
+      apt: update_cache=yes
+
+    - name: Set timezone to Asia/Tokyo
+      timezone:
+        name: Asia/Tokyo
+
+    - name: Apt Install
+      apt:
+        name: [
+          #'sos',
+          'ntpdate',
+          'chrony',
+          'bash-completion',
+          'wget',
+          'curl',
+          'rsync',
+          'git',
+          'bc',
+          'tcpdump',
+          'lsof',
+          #'perf',
+          'nfs-common',
+          'dnsutils',
+          'net-tools',
+          'procps',
+          'sysstat',
+          'zip',
+          'unzip',
+          'pigz',
+          'yum-utils',
+          'nethogs',
+          'strace',
+          'ltrace',
+          'psmisc',
+          'bsd-mailx',
+          'traceroute',
+          'snmp',
+          'snmpd',
+          'snmp-mibs-downloader',
+          'jq',
+        ]
+
+    - name: Set history format
+      copy : >
+        src=templates/history.sh.j2
+        dest=/etc/profile.d/history.sh
+        backup=yes

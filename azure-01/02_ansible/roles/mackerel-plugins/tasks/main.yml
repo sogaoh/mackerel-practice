@@ -1,0 +1,12 @@
+---
+- name: Set mackerel-agent.conf
+  blockinfile:
+    dest: /etc/mackerel-agent/mackerel-agent.conf
+    backup: yes
+    block: |
+      {{ item.content }}
+    marker: ""
+  with_items:
+    - "{{ metrics_docker }}"
+  changed_when: true
+  notify: "restart mackerel-agent"

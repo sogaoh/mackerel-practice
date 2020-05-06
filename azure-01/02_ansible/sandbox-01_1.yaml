@@ -1,0 +1,30 @@
+---
+# for over Ubuntu 18.04
+#   when: (ansible_distribution == "Ubuntu" and ansible_distribution_release == "xenial")
+
+- name: Install Common Tools
+  import_playbook: ./ubuntu18_basic.yaml
+
+- hosts: all
+  become: yes
+
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+    #host_name: sandbox-01
+
+  tasks:
+    #- name: set hostname
+    #  become: true
+    #  hostname: name={{host_name}}
+
+    - name: Apt Install
+      apt:
+        name: [
+          'tmux',
+          'make',
+          'ctop',
+          'mysql-client'
+        ]
+
+  roles:
+    - geerlingguy.docker

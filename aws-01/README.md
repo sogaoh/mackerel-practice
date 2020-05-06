@@ -38,14 +38,14 @@ git clone https://github.com/sogaoh/mackerel-practice.git
 
 ### 01.Terraform
 ```
-cd mackerel-practice/01_terraform
+cd mackerel-practice/aws-01/01_terraform
 (vi terraform.tfvars)
 
 terraform init
 terraform plan
 terraform apply
 
-cd ..   # mackerel-practice
+cd ..   # mackerel-practice/aws-01
 ```
 
 ### 02.Ansible 
@@ -70,7 +70,7 @@ ansible-playbook ./docker-01_3.yaml -i "${public_ip}," -e @variables.yaml -u ubu
 
 rm -f *.retry
 
-cd ..   # mackerel-practice
+cd ..   # mackerel-practice/aws-01
 ```
 
 ### 03.db_data 
