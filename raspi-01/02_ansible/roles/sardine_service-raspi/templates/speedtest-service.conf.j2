@@ -4,3 +4,10 @@ destination = "Mackerel"
 service     = "{{ service_to_post }}"
 interval    = "300s"
 timeout     = "200s"
+
+[plugin.metrics.speedtest_servers]
+command     = "/opt/scripts/list-speedtest-servers.sh"
+destination = "Mackerel"
+service     = "{{ service_to_post }}"
+interval    = "120s"
+timeout     = "60s"

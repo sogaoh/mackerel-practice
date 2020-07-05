@@ -5,3 +5,10 @@
     state: restarted
     daemon_reload: yes
   become: true
+
+- name: restart sardine-agent
+  systemd:
+    name: sardine-agent
+    state: restarted
+    daemon_reload: yes
+  become: true

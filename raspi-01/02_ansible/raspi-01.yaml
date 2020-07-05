@@ -9,11 +9,11 @@
     ansible_python_interpreter: /usr/bin/python3
 
   roles:
-#    - hostname
-    - mackerel-agent-raspi
-#    - golang-raspi
-    - mackerel-plugins-raspi
-    - speedtest_net-cli-raspi
-#    - sardine-raspi
+##    - hostname
+#    - mackerel-agent-raspi
+##    - golang-raspi
+#    - mackerel-plugins-raspi
+#    - speedtest_net-cli-raspi
+##    - sardine-raspi
     - sardine_service-raspi
 

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+SECONDS=`date '+%s'`
+
+NAME1='speedtest_servers.number'
+VALUE1=`speedtest -L | wc -l`
+echo -e "${NAME1}\t${VALUE1}\t${SECONDS}"
+
+NAME2='speedtest_servers.exists6087'
+VALUE2=`speedtest -L | grep 6087 | wc -l`
+echo -e "${NAME2}\t${VALUE2}\t${SECONDS}"
+
+exit 0

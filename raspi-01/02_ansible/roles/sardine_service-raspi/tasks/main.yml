@@ -8,6 +8,14 @@
     mode: 0755
     backup: yes
 
+- name: Set /opt/scripts/list-speedtest-servers.sh
+  copy :
+    src: roles/sardine_service-raspi/templates/list-speedtest-servers.sh.j2
+    dest: /opt/scripts/list-speedtest-servers.sh
+    owner: root
+    group: root
+    mode: 0755
+    backup: yes
 
 - name: Set /opt/sardine/speedtest-service.conf
   template :
@@ -27,7 +35,8 @@
     group: root
     mode: 0644
     backup: yes
-
+  changed_when: true
+  notify: "restart sardine-agent"
 
 - name: Enable service sardine-agent, and not touch the state
   service:
@@ -44,11 +53,11 @@
   blockinfile:
     dest: /etc/mackerel-agent/mackerel-agent.conf
     backup: yes
-    block: |
-      {{ item.content }}
-    marker: ""
-  with_items:
-    - "{{ check_sardine }}"
-    - "{{ check_log_speedtest }}"
+#    block: |
+#      {{ item.content }}
+#    marker: ""
+#  with_items:
+#    - "{{ check_sardine }}"
+#    - "{{ check_log_speedtest }}"
   changed_when: true
   notify: "restart mackerel-agent"
