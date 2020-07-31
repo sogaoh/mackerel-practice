@@ -9,7 +9,7 @@
 
 ## WIP
 - [google-01](google-01)
-    -  GoogleAnalyticsからアクティブユーザー数を定期的にMackerelサービスメトリックに投稿する の関連コード
+    -  GoogleAnalyticsで取得したアクティブユーザー数を定期的にMackerelサービスメトリックに投稿する の関連コード
 
 - [azure-01](azure-01)
     - Azureインテグレーションを利用してモニタリングする の環境構築コード
