@@ -138,6 +138,9 @@ export MACKEREL_SERVICE_NAME=${Set Yours}
 project = "${Set Yours}"
 region  = "${Set Yours}"
 credentials = "{ \"type\": \"service_account\", \"project_id\":...${Set Yours}...iam.gserviceaccount.com\" }"
+
+myblog_name = "${Set Yours}"
+myblog-visitor-count_app_url = "${Set Your Heroku App URL}"
 ```
 
 
