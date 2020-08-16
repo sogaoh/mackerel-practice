@@ -5,7 +5,7 @@ GoogleAnalyticsで取得したアクティブユーザー数を定期的にMacke
 refs 
 - Pubs/Mackerel Ambassador (sogaoh) blogs/
     - [GoogleAnalyticsで取得したアクティブユーザー数を定期的にMackerelサービスメトリックに投稿する (1)](https://esa-pages.io/p/sharing/6641/posts/976/ebc3295116a84b02c966.html)
-    - GoogleAnalyticsで取得したアクティブユーザー数を定期的にMackerelサービスメトリックに投稿する (2)
+    - [GoogleAnalyticsで取得したアクティブユーザー数を定期的にMackerelサービスメトリックに投稿する (2)](https://esa-pages.io/p/sharing/6641/posts/979/7ba0cdf6e32419970274.html)
 
 
 ## Pre-Requirements
