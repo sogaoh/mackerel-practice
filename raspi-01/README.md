@@ -13,7 +13,7 @@ refs
     - Purchase
     - Assemble
     - Initial setup
-        - refs [RaspberryPi起点で自宅インターネット回線のモニタリング作戦 (1/4 : RaspberryPi4 セットアップ) - Qrunch](https://qrunch.net/@sogaoh/entries/h4u7lYcCtrOx24Fo)
+        - refs [RaspberryPi起点で自宅インターネット回線のモニタリング作戦 (1/4 : RaspberryPi4 セットアップ) - Zenn](https://zenn.dev/sogaoh/articles/2020_04_10_20_23-from-qrunch)
     - SSH connect configure (for running `ansible-playbook`)
 
 - Local 
