@@ -87,12 +87,11 @@ bundle exec ruby app.rb -p 9876   # 9876 は適宜変えてください
     - App name : ${Set Yours}
     - Choose a regin : United States (or Europe)
     - Config Vars
+        - SERVICE_ACCOUNT_EMAIL : ${Set Yours}
         - GOOGLE_API_KEY        : ${Set Yours}
         - MACKEREL_API_KEY      : ${Set Yours}
         - MACKEREL_SERVICE_NAME : ${Set Yours}
-        - PROFILE_ID            : ${Set Yours} (Google Analytics View ID)  
-        - SERVICE_ACCOUNT_EMAIL : ${Set Yours}
-        - WEBSITE_NAME          : ${Set Yours} ex) gitpitch
+        - SITE_AND_VIEW_ID_JSON : ${Set Yours} (Website names (Google Analytics embedded) & Google Analytics View IDs.)  
 3. Push `Deploy app` button... 
 
 
@@ -125,11 +124,16 @@ credentials = "{ \"type\": \"service_account\", \"project_id\":...${Set Yours}..
 #### .envrc
 ```
 export SERVICE_ACCOUNT_EMAIL=${service_account}@${your_gcp_project}.iam.gserviceaccount.com
-export PROFILE_ID=${your_analytics_view_id}
 export GOOGLE_API_KEY="-----BEGIN PRIVATE KEY----- {{ \nを含む private_key }} -----END PRIVATE KEY-----"
-export WEBSITE_NAME=${Set Yours}
 export MACKEREL_API_KEY=${your_mackerel_api_key}
 export MACKEREL_SERVICE_NAME=${Set Yours}
+export SITE_AND_VIEW_ID_JSON="[{\"hoge-blog\":12345678},{\"fuga-blog\":23456789}]"
+```
+
+### 03.heroku_deploy
+**SITE_AND_VIEW_ID_JSON 以外** は02.の .envrc と同一内容でOK
+```
+SITE_AND_VIEW_ID_JSON=[{"hoge-blog":12345678},{"fuga-blog":23456789}]
 ```
 
 ### 04.terraform_jobs
