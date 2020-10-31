@@ -6,6 +6,7 @@ refs
 - Pubs/Mackerel Ambassador (sogaoh) blogs/
     - [GoogleAnalyticsで取得したアクティブユーザー数を定期的にMackerelサービスメトリックに投稿する (1)](https://esa-pages.io/p/sharing/6641/posts/976/ebc3295116a84b02c966.html)
     - [GoogleAnalyticsで取得したアクティブユーザー数を定期的にMackerelサービスメトリックに投稿する (2)](https://esa-pages.io/p/sharing/6641/posts/979/7ba0cdf6e32419970274.html)
+    - [GoogleAnalyticsで取得したアクティブユーザー数を定期的にMackerelサービスメトリックに投稿する (3)](https://esa-pages.io/p/sharing/6641/posts/1079/8c63300b0975e176ab31.html)
 
 
 ## Pre-Requirements
