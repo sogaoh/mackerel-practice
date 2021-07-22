@@ -17,6 +17,15 @@
     mode: 0755
     backup: yes
 
+- name: Set /opt/scripts/ip2metric.sh
+  copy :
+    src: roles/sardine_service-raspi/templates/ip2metric.sh.j2
+    dest: /opt/scripts/ip2metric.sh
+    owner: root
+    group: root
+    mode: 0755
+    backup: yes
+
 - name: Set /opt/sardine/speedtest-service.conf
   template :
     src: roles/sardine_service-raspi/templates/speedtest-service.conf.j2

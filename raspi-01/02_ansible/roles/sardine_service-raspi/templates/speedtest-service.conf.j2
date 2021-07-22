@@ -11,3 +11,10 @@ destination = "Mackerel"
 service     = "{{ service_to_post }}"
 interval    = "120s"
 timeout     = "60s"
+
+[plugin.metrics.global_ip]
+command     = "/opt/scripts/ip2metric.sh"
+destination = "Mackerel"
+service     = "home"
+interval    = "180s"
+timeout     = "90s"

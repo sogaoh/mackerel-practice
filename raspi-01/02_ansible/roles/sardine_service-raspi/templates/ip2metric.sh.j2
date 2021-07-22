@@ -1,0 +1,22 @@
+#!/bin/bash
+LANG=C
+PATH=/bin:/usr/bin
+#if [ $# -ne 1 ]
+#then
+#  echo "Usage: $0 [IPAddress]"
+#  exit 1
+#fi
+
+IP=$(curl -s ifconfig.io)
+
+O1=$( awk -F\. '{printf"%d",$1}' <<< "$IP" )
+O2=$( awk -F\. '{printf"%d",$2}' <<< "$IP" )
+O3=$( awk -F\. '{printf"%d",$3}' <<< "$IP" )
+O4=$( awk -F\. '{printf"%d",$4}' <<< "$IP" )
+#echo "$(( ( ${O1} << 24 ) + ( ${O2} << 16 ) + ( ${O3} << 8 ) + ${O4} ))"
+
+VALUE="$(( ( ${O1} << 24 ) + ( ${O2} << 16 ) + ( ${O3} << 8 ) + ${O4} ))"
+SECONDS=`date '+%s'`
+NAME='global_ip.ip2int'
+
+echo -e "${NAME}\t${VALUE}\t${SECONDS}"

@@ -1,11 +1,14 @@
 # mackerel-practice/raspi-01 
 
 RaspberryPi起点で自宅インターネット回線モニタリング作戦 の環境構築コード
++ 自宅のグローバルIPが変わるのを監視する用のコード
 
 refs 
 - Pubs/Mackerel Ambassador (sogaoh) blogs/
     - [RaspberryPiからSpeedtestCLIの結果をMackerelサービスメトリックに投稿する (1)](https://esa-pages.io/p/sharing/6641/posts/798/a519fa8de990076c0ed8.html) 
     - [RaspberryPiからSpeedtestCLIの結果をMackerelサービスメトリックに投稿する (2)](https://esa-pages.io/p/sharing/6641/posts/799/7749ccbd8d0d242b410b.html)
+- https://zenn.dev/sogaoh
+    - Mackerelで自宅のグローバルIPが変わるのを監視する方法 (1) <!-- [Mackerelで自宅のグローバルIPが変わるのを監視する方法 (1)]() -->
     
 
 ## Pre-Requirements
@@ -83,6 +86,7 @@ ansible_become_method=enable
 - [mackerel-plugins-raspi](02_ansible/roles/mackerel-plugins-raspi)
 - [speedtest_net-cli-raspi](02_ansible/roles/speedtest_net-cli-raspi)
 - [sardine_service-raspi](02_ansible/roles/sardine_service-raspi)
+    - `ip2metric.sh` added 2021/07/22
 
 
 <!-- 
