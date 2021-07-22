@@ -8,7 +8,7 @@ refs
     - [RaspberryPiからSpeedtestCLIの結果をMackerelサービスメトリックに投稿する (1)](https://esa-pages.io/p/sharing/6641/posts/798/a519fa8de990076c0ed8.html) 
     - [RaspberryPiからSpeedtestCLIの結果をMackerelサービスメトリックに投稿する (2)](https://esa-pages.io/p/sharing/6641/posts/799/7749ccbd8d0d242b410b.html)
 - https://zenn.dev/sogaoh
-    - Mackerelで自宅のグローバルIPが変わるのを監視する方法 (1) <!-- [Mackerelで自宅のグローバルIPが変わるのを監視する方法 (1)]() -->
+    - [Mackerelで自宅のグローバルIPが変わるのを監視する方法 (1)](https://zenn.dev/sogaoh/articles/21-07-22-1e5495c4215df0)
     
 
 ## Pre-Requirements

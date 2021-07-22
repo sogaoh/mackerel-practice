@@ -16,6 +16,9 @@ uses https://github.com/mackerelio-labs/terraform-provider-mackerel
 
 - [monitor/external : URL外形監視](terraform-provider/monitor/external)
     - terraform-provider-mackerel で URL外形監視を 2 秒(+α)で始める の関連コード
+- [monitor/service_metric : サービスメトリック監視](terraform-provider/monitor/service_metric)
+    - 自宅のグローバルIPが変わったのを検知して通知する 設定コード
+
 
 ## WIP
 
