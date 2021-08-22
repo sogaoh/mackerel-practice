@@ -2,10 +2,8 @@
 
 自宅のグローバルIPが変わるのを監視する の関連コード
 
-<!--
 refs
 - [Mackerelで自宅のグローバルIPが変わるのを監視する方法 (1)](https://zenn.dev/sogaoh/articles/21-07-22-1e5495c4215df0)
--->
 
 
 ## Pre-Requirements
@@ -18,8 +16,8 @@ refs
 - Sign up https://mackerel.io/
     - confirm API key
 
-- (Set up service metric posting.) 
-   
+- (Set up service metric posting.)
+
 
 
 ## Execution procedure

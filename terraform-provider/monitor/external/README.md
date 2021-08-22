@@ -2,10 +2,8 @@
 
 terraform-provider-mackerel で URL外形監視を 2 秒(+α)で始める の関連コード
 
-<!--
 refs
 - [terraform-provider-mackerel で URL外形監視を 2 秒(+α)で始める](https://zenn.dev/sogaoh/articles/21-05-09-02a760159e89c8cf5880)
--->
 
 
 ## Pre-Requirements
