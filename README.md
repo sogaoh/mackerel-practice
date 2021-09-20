@@ -8,7 +8,10 @@
     - RaspberryPi起点で自宅インターネット回線モニタリング作戦 の環境構築コード  
       ＋ 自宅のグローバルIPが変わるのを監視する用のコード
 - [google-01](google-01)
-    -  GoogleAnalyticsで取得したアクティブユーザー数を定期的にMackerelサービスメトリックに投稿する の関連コード
+    - GoogleAnalyticsで取得したアクティブユーザー数を定期的にMackerelサービスメトリックに投稿する の関連コード
+
+- [scripts/lambda-cognito-metric](scripts/lambda-cognito-metric)
+    - Cognito User Pool の SignIn メトリック（Attempt,Success）を定期的にMackerelサービスメトリックに投稿する の関連コード
 
 
 ### terraform-provider-mackerel Related

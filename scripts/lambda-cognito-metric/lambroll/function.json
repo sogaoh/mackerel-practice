@@ -1,0 +1,15 @@
+{
+  "Description": "",
+  "FunctionName": "lambda-cognito-metric-invoker",
+  "Handler": "main.post_cognito_sign_in_stats",
+  "MemorySize": 128,
+  "Role": "{{ must_env `FUNCTION_INVOKE_ROLE` }}",
+  "Runtime": "python3.9",
+  "Tags": {
+    "Name": "lambda-cognito-metric-invoker"
+  },
+  "Timeout": 30,
+  "TracingConfig": {
+    "Mode": "PassThrough"
+  }
+}
